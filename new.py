@@ -66,3 +66,33 @@ def mark_attendance():
         file.write(participant + "|" + status.title() + "\n")
 
     print("Attendance recorded successfully!")
+
+def view_attendance():
+    '''
+    Displays all attendance records
+    '''
+
+    with open("attendance.txt", "r") as file:
+        lines = file.readlines()
+
+    if len(lines) == 0:
+        print("No attendance records found.")
+        return
+
+    print("\n===== ATTENDANCE RECORDS =====")
+
+    count = 1
+
+    for line in lines:
+        record = line.strip().split("|")
+
+        print(
+            str(count) + ". " +
+            record[0] + " | " +
+            record[1] + " | " +
+            record[2] + " | " +
+            record[3] + " | " +
+            record[4]
+        )
+
+        count += 1
